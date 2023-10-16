@@ -6,14 +6,24 @@
 //
 
 import SwiftUI
+import Observation
+
+@Observable
+class ViewModel {
+    init() {}
+    
+    var count = 42
+}
 
 struct ContentView: View {
+    var viewModel = ViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Count: \(viewModel.count)")
+            Button("Add") {
+                viewModel.count += 1
+            }
         }
         .padding()
     }
